@@ -13,6 +13,8 @@ router.get('/', function(req, res, next) {
 router.get('/principal',
      function(req, res){
 
+      console.log("Body:", req.body);
+      console.log("Query:", req.query);
       let username = req.query.username;
       let tickets = req.query.tickets;
 
