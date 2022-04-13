@@ -69,12 +69,13 @@ span.psw {
 <body>
 
 <h2>M-Holding Login</h2>
-
+<!-- para Prod https://app-svr-financial.herokuapp.com -->
 <form action="https://app-svr-financial.herokuapp.com/login" method="post">
+  <!--
   <div class="imgcontainer">
     <img src="../images/img_login.png" alt="Avatar" class="avatar">
   </div>
-
+  -->
   <div class="container">
     <label for="email"><b>Email</b></label>
     <input type="text" placeholder="Enter Username" name="email" required>
@@ -86,13 +87,16 @@ span.psw {
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
-  </div>
-
+  </div>  
   <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn">Cancel</button>
     <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
+
+<div class="container">
+  <button onclick="window.location.href='/register'">Register</button>
+</div>
 
 </body>
 </html>

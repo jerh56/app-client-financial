@@ -129,12 +129,19 @@
     </p>
 
     <p>Actualmente cuentas con <%= tickets %> inversion(es)</p>
-
+     <!-- Para Prod usar  https://mholding.herokuapp.com -->
     <button onclick="window.location.href='https://mholding.herokuapp.com'">Volver al inicio</button>
 
     <button type="button" class="collapsible">Mis Inversiones ></button>
     <div class="content" style="overflow-x:auto;">
         <table id="table-invest">
+
+        </table>
+    </div>
+
+    <button type="button" class="collapsible">Proyectos de inversión actuales ></button>
+    <div class="content" style="overflow-x:auto;">
+        <table id="table-project">
 
         </table>
     </div>
@@ -161,6 +168,7 @@
             console.log("prueba");
             $.ajax({
                 type: 'GET',
+                // para Prod usar https://app-svr-financial.herokuapp.com
                 url: 'https://app-svr-financial.herokuapp.com/proyectos',
                 //crossDomain: true,
                 //headers: { "Accept": "application/json"},
@@ -172,6 +180,44 @@
                 //},
                 success: function (data, textStatus, request) {
                     console.log(data);
+              
+                    let rowCount = data.length;
+                    let table = document.getElementById("table-project");
+                    //Add the header row.
+                    let row = table.insertRow(-1);
+                    let headerCell = document.createElement("TH");
+                    headerCell.innerHTML = "investment_projectID";
+                    row.appendChild(headerCell);
+
+                    headerCell = document.createElement("TH");
+                    headerCell.innerHTML = "name";
+                    row.appendChild(headerCell);
+
+                    headerCell = document.createElement("TH");
+                    headerCell.innerHTML = "ticketQuantity";
+                    row.appendChild(headerCell);
+
+                    headerCell = document.createElement("TH");
+                    headerCell.innerHTML = "ticketAmount";
+                    row.appendChild(headerCell);
+
+                    headerCell = document.createElement("TH");
+                    headerCell.innerHTML = "yearlyRate";
+                    row.appendChild(headerCell);
+                   // {investment_projectID: '1', name: 'hotel saltillo', ticketQuantity: '5', ticketAmount: '20000', yearlyRate: '10'}
+                    for (let i = 0; i < rowCount; i++) {
+                        let row = table.insertRow(-1);
+                        let rowCell = row.insertCell(0);
+                        rowCell.innerHTML = data[i].investment_projectID;
+                        rowCell = row.insertCell(1);
+                        rowCell.innerHTML = data[i].name;
+                        rowCell = row.insertCell(2);
+                        rowCell.innerHTML = data[i].ticketQuantity;
+                        rowCell = row.insertCell(3);
+                        rowCell.innerHTML = data[i].ticketAmount;
+                        rowCell = row.insertCell(4);
+                        rowCell.innerHTML = data[i].yearlyRate;
+                    }
                 }
 
             });
@@ -179,6 +225,7 @@
 
             $.ajax({
                 type: 'GET',
+                // para Prod usar https://app-svr-financial.herokuapp.com
                 url: 'https://app-svr-financial.herokuapp.com/investments',
                 //crossDomain: true,
                 //headers: { "Accept": "application/json"},

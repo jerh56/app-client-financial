@@ -10,6 +10,18 @@ router.get('/', function(req, res, next) {
 });
 
 
+/* GET register page. */
+router.get('/register', function(req, res, next) {
+  res.render('register', { title: 'register' });
+});
+
+
+/* GET error page. */
+router.get('/error', function(req, res, next) {
+  let message = req.query.message;
+  res.render('error', { message: message });
+});
+
  /* Maneja la aplicación principal */
 router.get('/principal',
      function(req, res){
