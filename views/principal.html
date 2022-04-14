@@ -214,11 +214,13 @@
                         let investment_projectID = data[i].investment_projectID;
                         let name = data[i].name;
                         let username = "<%= username %>";
-                        rowCell.innerHTML = `<a href='/tickets/?investment_projectID=${investment_projectID}&username=${username}>${name}</a>`;
+
+                        console.log(investment_projectID, name, username);
+                        rowCell.innerHTML = `<a href="/tickets/?investment_projectID=${investment_projectID}&username=${username}">${name}</a>`;
                         rowCell = row.insertCell(2);
                         rowCell.innerHTML = data[i].ticketQuantity;
                         rowCell = row.insertCell(3);
-                        rowCell.innerHTML = data[i].ticketAmount;
+                        rowCell.innerHTML = data[i].projectAmount;
                         rowCell = row.insertCell(4);
                         rowCell.innerHTML = data[i].yearlyRate;
                     }
