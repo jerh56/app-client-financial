@@ -41,7 +41,8 @@ router.get('/principal',
 /* GET tickets page. */
 router.get('/tickets', function(req, res, next) {
   let investment_projectID = req.query.investment_projectID;
-  res.render('tickets', { investment_projectID: investment_projectID });
+  let username = req.query.username;
+  res.render('tickets', { investment_projectID: investment_projectID, username: username });
 });
 
 module.exports = router;
