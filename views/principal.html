@@ -198,7 +198,7 @@
                     row.appendChild(headerCell);
 
                     headerCell = document.createElement("TH");
-                    headerCell.innerHTML = "ticketAmount";
+                    headerCell.innerHTML = "projectAmount";
                     row.appendChild(headerCell);
 
                     headerCell = document.createElement("TH");
@@ -211,7 +211,10 @@
                         rowCell.innerHTML = data[i].investment_projectID;
                         rowCell = row.insertCell(1);
 
-                        rowCell.innerHTML = "<a href='/tickets/?investment_projectID=´data[i].investment_projectID´'>´data[i].name´</a>";
+                        let investment_projectID = data[i].investment_projectID;
+                        let name = data[i].name;
+                        let username = <%= username %>;
+                        rowCell.innerHTML = `<a href='/tickets/?investment_projectID=${investment_projectID}&username=${username}>${name}</a>`;
                         rowCell = row.insertCell(2);
                         rowCell.innerHTML = data[i].ticketQuantity;
                         rowCell = row.insertCell(3);
