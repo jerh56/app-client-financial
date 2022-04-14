@@ -102,7 +102,6 @@
 
         .content {
             padding: 0 18px;
-            display: none;
             overflow: hidden;
             background-color: #f1f1f1;
         }
@@ -123,32 +122,25 @@
 
 <body>
 
-    <h2>Principal</h2>
+    <h2>Tickets</h2>
 
-    <p>Bienvenido <%= username %>
-    </p>
+    <!-- <p>Bienvenido <%= username %></p> -->
 
-    <p>Actualmente cuentas con <%= tickets %> inversion(es)</p>
+    <p>Puedes hacer clic en el botón invertir de los tickets que se encuentran disponibles</p>
      <!-- Para Prod usar  https://mholding.herokuapp.com -->
-    <button onclick="window.location.href='https://mholding.herokuapp.com'">Volver al inicio</button>
+    <button onclick="window.location.href='/'">Volver al inicio</button>
 
-    <button type="button" class="collapsible">Mis Inversiones ></button>
+    <button type="button" class="collapsible">Tickets ></button>
     <div class="content" style="overflow-x:auto;">
-        <table id="table-invest">
+        <table id="table-tickets">
 
-        </table>
-    </div>
-
-    <button type="button" class="collapsible">Proyectos de inversión actuales ></button>
-    <div class="content" style="overflow-x:auto;">
-        <table id="table-project">
-
+            <%= investment_projectID %>
         </table>
     </div>
 
     <script>
 
-        var coll = document.getElementsByClassName("collapsible");
+/*         var coll = document.getElementsByClassName("collapsible");
         var i;
 
         for (i = 0; i < coll.length; i++) {
@@ -161,10 +153,11 @@
                     content.style.display = "block";
                 }
             });
-        }
+        } */
 
 
-        $(document).ready(function () {
+/*         $(document).ready(function () {
+            console.log("prueba");
             $.ajax({
                 type: 'GET',
                 // para Prod usar https://app-svr-financial.herokuapp.com
@@ -189,7 +182,6 @@
                     row.appendChild(headerCell);
 
                     headerCell = document.createElement("TH");
-
                     headerCell.innerHTML = "name";
                     row.appendChild(headerCell);
 
@@ -210,8 +202,7 @@
                         let rowCell = row.insertCell(0);
                         rowCell.innerHTML = data[i].investment_projectID;
                         rowCell = row.insertCell(1);
-
-                        rowCell.innerHTML = "<a href='/tickets/?investment_projectID=´data[i].investment_projectID´'>´data[i].name´</a>";
+                        rowCell.innerHTML = data[i].name;
                         rowCell = row.insertCell(2);
                         rowCell.innerHTML = data[i].ticketQuantity;
                         rowCell = row.insertCell(3);
@@ -278,7 +269,7 @@
                 }
 
             });
-        });
+        }); */
     </script>
 </body>
 

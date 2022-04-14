@@ -38,4 +38,10 @@ router.get('/principal',
       res.render('principal', {message: 'Bienvenido', username: username, tickets:tickets, customerid: customerid});
 });
 
+/* GET tickets page. */
+router.get('/tickets', function(req, res, next) {
+  let investment_projectID = req.query.investment_projectID;
+  res.render('tickets', { investment_projectID: investment_projectID });
+});
+
 module.exports = router;
