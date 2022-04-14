@@ -156,8 +156,9 @@
         } */
 
 
-/*         $(document).ready(function () {
-            console.log("prueba");
+     $(document).ready(function () {
+    /*       
+    console.log("prueba");
             $.ajax({
                 type: 'GET',
                 // para Prod usar https://app-svr-financial.herokuapp.com
@@ -214,27 +215,30 @@
 
             });
             //ev.preventDefault();
+*/
 
             $.ajax({
                 type: 'GET',
                 // para Prod usar https://app-svr-financial.herokuapp.com
-                url: 'https://app-svr-financial.herokuapp.com/investments',
+                url: 'https://app-svr-financial.herokuapp.com/tickets',
                 //crossDomain: true,
                 //headers: { "Accept": "application/json"},
                 dataType: "json",
                 //headers: { 'Access-Control-Allow-Origin': '*' },
-                data: { 'email': '<%= username %>', 'customerid': '<%= customerid %>' },
+                data: { 'investment_projectID': '<%= investment_projectID %>', 'customerid': '<%= customerid %>',  },
                 //beforeSend: function (xhr) {
                 //    xhr.withCredentials = true;
                 //},
                 success: function (data, textStatus, request) {
                     console.log(data);
                     let rowCount = data.length;
-                    let table = document.getElementById("table-invest");
+                    let table = document.getElementById("table-tickets");
+
+                    				
                     //Add the header row.
                     let row = table.insertRow(-1);
                     let headerCell = document.createElement("TH");
-                    headerCell.innerHTML = "investmentID";
+                    headerCell.innerHTML = "ticketID";
                     row.appendChild(headerCell);
 
                     headerCell = document.createElement("TH");
@@ -242,34 +246,34 @@
                     row.appendChild(headerCell);
 
                     headerCell = document.createElement("TH");
-                    headerCell.innerHTML = "investmentAmount";
-                    row.appendChild(headerCell);
-
-                    headerCell = document.createElement("TH");
                     headerCell.innerHTML = "customerID";
                     row.appendChild(headerCell);
 
                     headerCell = document.createElement("TH");
-                    headerCell.innerHTML = "ticketID";
+                    headerCell.innerHTML = "ticketAmount";
+                    row.appendChild(headerCell);
+
+                    headerCell = document.createElement("TH");
+                    headerCell.innerHTML = "available";
                     row.appendChild(headerCell);
 
                     for (let i = 0; i < rowCount; i++) {
                         let row = table.insertRow(-1);
                         let rowCell = row.insertCell(0);
-                        rowCell.innerHTML = data[i].investmentID;
+                        rowCell.innerHTML = data[i].ticketID;
                         rowCell = row.insertCell(1);
                         rowCell.innerHTML = data[i].investment_projectID;
                         rowCell = row.insertCell(2);
-                        rowCell.innerHTML = data[i].investmentAmount;
-                        rowCell = row.insertCell(3);
                         rowCell.innerHTML = data[i].customerID;
+                        rowCell = row.insertCell(3);
+                        rowCell.innerHTML = data[i].ticketAmount;
                         rowCell = row.insertCell(4);
-                        rowCell.innerHTML = data[i].ticketID;
+                        rowCell.innerHTML = data[i].available;
                     }
                 }
 
             });
-        }); */
+        });
     </script>
 </body>
 
