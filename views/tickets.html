@@ -245,6 +245,10 @@
                     row.appendChild(headerCell);
 
                     headerCell = document.createElement("TH");
+                    headerCell.innerHTML = "";
+                    row.appendChild(headerCell);
+
+                    headerCell = document.createElement("TH");
                     headerCell.innerHTML = "customerID";
                     row.appendChild(headerCell);
 
@@ -263,10 +267,14 @@
                         rowCell = row.insertCell(1);
                         rowCell.innerHTML = data[i].investment_projectID;
                         rowCell = row.insertCell(2);
-                        rowCell.innerHTML = data[i].customerID;
+                        if (data[i].available == 1){
+                            rowCell.innerHTML = "<button type='button'>Invertir</button>";
+                        }
                         rowCell = row.insertCell(3);
-                        rowCell.innerHTML = data[i].ticketAmount;
+                        rowCell.innerHTML = data[i].customerID;
                         rowCell = row.insertCell(4);
+                        rowCell.innerHTML = data[i].ticketAmount;
+                        rowCell = row.insertCell(5);
                         rowCell.innerHTML = data[i].available;
                     }
                 }
