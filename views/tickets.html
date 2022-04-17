@@ -158,7 +158,9 @@
         $(document).ready(function () {
 
 
-            $(".investmentButton").on('click', function (event) {
+        function confirmTicket(element) {
+                console.log(element);
+                let ticketID = element.value;
                 let text = "Press a button!\nEither OK or Cancel.";
                 if (confirm(text) == true) {
                     text = "You pressed OK!";
@@ -166,7 +168,7 @@
                     text = "You canceled!";
                 }
                 //(... rest of your JS code)
-            });
+            };
             /*       
             console.log("prueba");
                     $.ajax({
@@ -279,7 +281,7 @@
                         rowCell.innerHTML = data[i].investment_projectID;
                         rowCell = row.insertCell(2);
                         if (data[i].available == 1) {
-                            rowCell.innerHTML = "<button type='button' class='investmentButton'>Invertir</button>";
+                            rowCell.innerHTML = "<button type='button' onclick='confirmTicket(this)' >Invertir</button>";
                         }
                         rowCell = row.insertCell(3);
                         rowCell.innerHTML = data[i].customerID;
