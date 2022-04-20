@@ -152,7 +152,7 @@
             $.ajax({
                 type: 'POST',
                 // para Prod usar https://app-svr-financial.herokuapp.com
-                url: 'http://localhost:3000/orderInvestment',
+                url: 'https://app-svr-financial.herokuapp.com/orderInvestment',
                 dataType: "json",
                 data: { 'ticketID': ticketID, 'customerid': customerID, 'investment_projectID': '<%= investment_projectID %>', 'username': '<%= username %>' },
                 success: function (data, textStatus, request) {
@@ -252,7 +252,7 @@
             $.ajax({
                 type: 'GET',
                 // para Prod usar https://app-svr-financial.herokuapp.com
-                url: 'http://localhost:3000/tickets',
+                url: 'https://app-svr-financial.herokuapp.com/tickets',
                 //crossDomain: true,
                 //headers: { "Accept": "application/json"},
                 dataType: "json",
