@@ -130,7 +130,7 @@
 
     <p>Actualmente cuentas con <%= tickets %> inversion(es)</p>
      <!-- Para Prod usar  https://mholding.herokuapp.com -->
-    <button onclick="window.location.href='https://mholding.herokuapp.com'">Volver al inicio</button>
+    <button onclick="window.location.href='/'">Volver al inicio</button>
 
     <button type="button" class="collapsible">Mis Inversiones ></button>
     <div class="content" style="overflow-x:auto;">
@@ -168,7 +168,7 @@
             $.ajax({
                 type: 'GET',
                 // para Prod usar https://app-svr-financial.herokuapp.com
-                url: 'https://app-svr-financial.herokuapp.com/proyectos',
+                url: 'http://localhost:3000/proyectos',
                 //crossDomain: true,
                 //headers: { "Accept": "application/json"},
                 dataType: "json",
@@ -214,9 +214,10 @@
                         let investment_projectID = data[i].investment_projectID;
                         let name = data[i].name;
                         let username = "<%= username %>";
+                        let customerid = "<%= customerid %>";
 
                         console.log(investment_projectID, name, username);
-                        rowCell.innerHTML = `<a href="/tickets/?investment_projectID=${investment_projectID}&username=${username}">${name}</a>`;
+                        rowCell.innerHTML = `<a href="/tickets/?investment_projectID=${investment_projectID}&username=${username}&customerid=${customerid}">${name}</a>`;
                         rowCell = row.insertCell(2);
                         rowCell.innerHTML = data[i].ticketQuantity;
                         rowCell = row.insertCell(3);
@@ -232,7 +233,7 @@
             $.ajax({
                 type: 'GET',
                 // para Prod usar https://app-svr-financial.herokuapp.com
-                url: 'https://app-svr-financial.herokuapp.com/investments',
+                url: 'http://localhost:3000/investments',
                 //crossDomain: true,
                 //headers: { "Accept": "application/json"},
                 dataType: "json",
